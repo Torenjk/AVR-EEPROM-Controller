@@ -36,6 +36,12 @@ bool chk_integrity(){
     //TODO
 }
 
+
+/*
+The following functions should only be called in the following scenarios:
+- You are writing to EEPROM by hand or by 3rd party
+*/
+
 void EE_SET_WRITE(bool w_enable){//For external calls
     if(w_enable){
         *EE_CONTROL_REG |= 0; //Reset
@@ -43,6 +49,21 @@ void EE_SET_WRITE(bool w_enable){//For external calls
     }
     if(!w_enable){
         *EE_CONTROL_REG = 0; //Disable EEMPE and Reset
+    }
+}
+
+uint8_t SET_PRG_MODE(uint8_t mode){ //Function will return the set mode, 5 == Errorcode
+    if(mode >= 4 || mode < 0 ) return NULL;
+        switch (mode){
+             case 0: *EE_CONTROL_REG = 0; //Atomic Operation
+             case 1: *EE_CONTROL_REG = (1 << 4); //00010000 Erase only
+             case 2: *EE_CONTROL_REG = (1 << 5); //00100000 Write only
+             case 3: *EE_CONTROL_REG = 48; //00110000 Reserved
+        }
+    if(mode == *EE_CONTROL_REG){
+        return *EE_CONTROL_REG;
+    } else {
+        return 5; //Error
     }
 }
 
