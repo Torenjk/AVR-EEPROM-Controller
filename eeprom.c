@@ -36,6 +36,16 @@ bool chk_integrity(){
     //TODO
 }
 
+void EE_SET_WRITE(bool w_enable){//For external calls
+    if(w_enable){
+        *EE_CONTROL_REG |= 0; //Reset
+        *EE_CONTROL_REG = (1 << 2); //Set EEMPE to enable Write
+    }
+    if(!w_enable){
+        *EE_CONTROL_REG = 0; //Disable EEMPE and Reset
+    }
+}
+
 int main(){
 
     return 0;
