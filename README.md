@@ -10,8 +10,9 @@ Currently limited to AT328P! But i plan to make it intercompatible.
 TODO:
 - [x] Read unsafe
 - [ ] Write unsafe
-- [ ] Read safe
+- [x] Read safe
 - [ ] Write safe
 - [ ] enable external RW (Master)
 - [ ] Get size function
 - [ ] Portability for the whole family
+- [ ] Change Port Zero-Sets to Bitwise operations
