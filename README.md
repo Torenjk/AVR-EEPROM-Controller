@@ -12,7 +12,7 @@ TODO:
 - [ ] Write unsafe
 - [x] Read safe
 - [ ] Write safe
-- [ ] enable external RW (Master)
+- [x] enable external RW (Master)
 - [ ] Get size function
 - [ ] Portability for the whole family
 - [ ] Change Port Zero-Sets to Bitwise operations
