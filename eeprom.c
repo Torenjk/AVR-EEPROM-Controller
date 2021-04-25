@@ -60,8 +60,9 @@ void EE_SET_WRITE(bool w_enable){ //For external calls
 }
 
 void SET_MASTER_WRITE(bool mw_enable){ //For external calls
-
-
+    //You have to set EEPE to 1 within 4 clock cycles to write Data!
+    if(mw_enable) *EE_CONTROL_REG |= (1 << 3);
+    if(!mw_enable) *EE_CONTROL_REG &= ~(1 << 3);
 }
 
 
