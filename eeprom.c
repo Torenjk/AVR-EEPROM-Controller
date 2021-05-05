@@ -29,6 +29,19 @@ uint8_t EE_READ_SAFE(uint8_t adress_low, uint8_t adress_high){
     return *EE_DATA;
 }
 
+//UNTESTED!
+bool EE_READ_BIT(uint8_t adr_low, uint8_t adr_high, uint8_t bit_pos, bool saferead){//bit_pos ranges from 0-7
+    uint8_t buf_byte = 0x0;
+    if(bit_pos > 7)return NULL; //Not an 8 Bit value
+    if(saferead){
+        buf_byte = EE_READ_SAFE(adr_low, adr_high);    
+    } else if(!saferead){
+        buf_byte = EE_READ_UNSEC(adr_low, adr_high);
+    }
+    if(buf_byte == 0x0)return 0;
+    return (buf_byte >> bit_pos) & 0x1;
+}
+
 bool chk_integrity(){
     //TODO
 }
