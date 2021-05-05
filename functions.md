@@ -24,7 +24,8 @@ SET_RI_STATUS
 
 EE_SET_WRITE
   - Function only lets you enable writing to the EEPROM but does not actually write to it!
-  - The writing Process itself, needs to be implemented by you
+  - The writing Process itself, needs to be implemented/called by you
+  - Do not call any of the above read functions as this creates overhead
   - Parameters --> bool enable/disable
 
 SET_MASTER_WRITE
