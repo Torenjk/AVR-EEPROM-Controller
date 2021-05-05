@@ -37,6 +37,6 @@ SET_PRG_MODE
   - Lets you set the programming mode (see Reference Manual for Details!)
   - mode-checks are implemented (valid modes 0-3)
   - different modes are documented in the Code and in the Reference Manual
-  - will return 5 if an invalid code has been passed or if the code did not get set properly
+  - will return 5 if an invalid mode has been passed or if the mode did not get set properly
   - will return set code if it has been set properly
   - Parameters --> mode (0 = Atomic, 1 = Erase only, 2 = Write only, 3 = Reserved)
